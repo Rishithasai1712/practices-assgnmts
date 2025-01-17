@@ -1,0 +1,92 @@
+import mysql.connector as c
+mydb=c.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="saii"
+)
+mycursor=mydb.cursor()
+mycursor.execute("create table heartpats(id int primary key,name varchar(20),city varchar(20),bp varchar(20))")
+mydb.commit()
+-----------------------------------------------------------------------------------------------------------------
+
+import mysql.connector as c
+mydb=c.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="saii"
+)
+mycursor=mydb.cursor()
+name=input("Enter your name")
+id = input("Enter your id")
+city = input("Enter your city")
+bp = input("Enter your bp")
+mycursor.execute("UPDATE heartpats SET name = %s, city = %s, bp = %s WHERE id = %s", (name, city, bp, id))
+mydb.commit()
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+import mysql.connector as c
+mydb=c.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="saii"
+)
+mycursor=mydb.cursor()
+mycursor.execute("select *from heartpats order by name asc")
+stds=mycursor.fetchall();
+for std in stds:
+    print(std)
+--------------------------------------------------------------------------------------------------
+import mysql.connector as c
+mydb=c.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="saii"
+)
+mycursor=mydb.cursor()
+mycursor.execute("select *from heartpats where bp between 70 and 100")
+stds=mycursor.fetchall();
+for std in stds:
+    print(std)
+----------------------------------------------------------------------------------------
+import mysql.connector as c
+mydb=c.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="saii"
+)
+mycursor=mydb.cursor()
+id = input("Enter your id")
+mycursor.execute("DELETE FROM heartpats WHERE id = %s", (id,))
+mydb.commit()
+----------------------------------------------------------------------------------------
+
+import mysql.connector as c
+mydb=c.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="saii"
+)
+mycursor=mydb.cursor()
+mycursor.execute("select *from heartpats where city= 'hyd'")
+stds=mycursor.fetchall();
+for std in stds:
+    print(std)
+------------------------------------------------------------------------------------
+import mysql.connector as c
+mydb=c.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="saii"
+)
+mycursor=mydb.cursor()
+mycursor.execute("select *from heartpats")
+stds=mycursor.fetchall();
+for std in stds:
+    print(std)
+-----------------------------------------------------------------------------
